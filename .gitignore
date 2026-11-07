@@ -1,0 +1,41 @@
+# ==============================================================================
+# .gitignore - ImpulsoJob
+# Proteção de credenciais, arquivos de ambiente, compilação e IDEs
+# ==============================================================================
+
+# 1. Arquivos de Ambiente e Credenciais Locais (NUNCA ENVIAR AO GITHUB)
+.env
+.env.local
+.env.*
+!.env.example
+.env.txt
+config.properties
+*.key
+*.pem
+
+# 2. Diretórios e Arquivos de Compilação do Gradle
+.gradle/
+build/
+bin/
+out/
+
+# 3. Arquivos específicos do NetBeans
+nbproject/private/
+.nb-gradle/
+build.xml
+nbbuild/
+dist/
+
+# 4. Outras IDEs (VS Code, IntelliJ, Eclipse)
+.idea/
+*.iml
+.vscode/
+.classpath
+.project
+.settings/
+
+# 5. Arquivos de log e SO
+*.log
+Thumbs.db
+Desktop.ini
+.DS_Store

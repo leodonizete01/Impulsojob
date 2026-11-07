@@ -1,0 +1,35 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+mainClassName = 'com.leonardo.impulsojob.Main'
+
+tasks.withType(JavaExec) {
+    jvmArgs += ['-Dfile.encoding=UTF-8']
+}
+
+tasks.withType(Test) {
+    jvmArgs += ['-Dfile.encoding=UTF-8']
+    useJUnitPlatform()
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.itextpdf:itext7-core:8.0.2'
+    implementation 'com.formdev:flatlaf:3.5.2'
+    implementation group: 'org.projectlombok', name: 'lombok', version: '1.18.48'
+    implementation 'org.postgresql:postgresql:42.7.1'
+    implementation 'org.mindrot:jbcrypt:0.4'
+    implementation 'io.github.cdimascio:java-dotenv:5.2.2'
+    
+    testImplementation platform('org.junit:junit-bom:5.14.4')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}

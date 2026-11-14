@@ -1,8 +1,10 @@
 package impulsojob.service;
 
+import impulsojob.config.Banco;
 import impulsojob.config.EnvConfig;
 import io.github.cdimascio.dotenv.Dotenv;
 import org.junit.jupiter.api.Test;
+import java.sql.Connection;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class DotenvValidationTest {
@@ -32,4 +34,15 @@ public class DotenvValidationTest {
         assertEquals("padrao", inexistente);
         assertFalse(EnvConfig.has("VARIAVEL_COMPLETAMENTE_INEXISTENTE_XYZ"));
     }
+
+    @Test
+    public void testConexaoBancoPostgres() {
+        assertDoesNotThrow(() -> {
+            try (Connection conn = Banco.getConnection()) {
+                assertNotNull(conn);
+                assertFalse(conn.isClosed());
+            }
+        });
+    }
 }
+
